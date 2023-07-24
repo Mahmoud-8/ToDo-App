@@ -1,5 +1,5 @@
 # To-Do App
-
+![Alt text](<Screenshot 2023-07-24 at 2.47.17 PM.png>)
 A simple To-Do app that allows users to add tasks to a list. 
 Users can mark tasks as completed by clicking on them and delete tasks by right-clicking on them. 
 The app stores tasks in the browser's local storage, providing persistence between page reloads.
