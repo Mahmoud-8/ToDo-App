@@ -1,6 +1,14 @@
 const form = document.getElementById('form');
 const input = document.getElementById('input');
-const todos = document.getElementById('todos');    
+const todosUL = document.getElementById('todos');  
+
+const todos = JSON.parse(localStorage.getItem('todos'));
+
+if(todos) {
+    todos.forEach(todo => {
+        addTodo(todo);
+    });
+}
 
 form.addEventListener("submit", (e) => {
     e.preventDefault();
@@ -8,11 +16,18 @@ form.addEventListener("submit", (e) => {
 });
 
 
-function addTodo() {
-    const todoText = input.value;
+function addTodo(todo) {
+    let todoText = input.value;
+    if(todo) {
+        todoText = todo.text;
+    }
     if (todoText) {
         const todoEL = document.createElement
         ("li");
+        if(todo && todo.completed) {
+            todoEL.classList.add('completed');
+
+        }
         todoEL.innerText = todoText;
 
         todoEL.addEventListener('click', () => {
@@ -26,7 +41,7 @@ function addTodo() {
             updateLs();
 
         })
-        todos.appendChild(todoEL);
+        todosUL.appendChild(todoEL);
         input.value = "";
 
         updateLs();
